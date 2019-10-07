@@ -1,11 +1,11 @@
-package digital.sebrae.platform.consulting.exceptions;
+package com.tokegenerator.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(value = HttpStatus.NOT_FOUND)
 public class NotFoundException extends RuntimeException {
-    private static final String DEFAULT_ERROR_MESSAGE = "The sebraeId or slug provided in the url was not found";
+    private static final String DEFAULT_ERROR_MESSAGE = "The parameter provided in the url was not found";
 
     public NotFoundException() {
         super(DEFAULT_ERROR_MESSAGE);

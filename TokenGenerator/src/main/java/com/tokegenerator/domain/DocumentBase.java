@@ -1,4 +1,4 @@
-package com.tokegenerator.TokenGenerator.domain;
+package com.tokegenerator.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -10,7 +10,7 @@ import org.springframework.data.annotation.Version;
 import java.time.LocalDateTime;
 
 @Data
-public abstract class DocumentBase {
+abstract class DocumentBase {
 
     @CreatedDate
     @JsonFormat(shape = JsonFormat.Shape.STRING)

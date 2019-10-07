@@ -1,4 +1,4 @@
-package digital.sebrae.platform.consulting.exceptions;
+package com.tokegenerator.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
