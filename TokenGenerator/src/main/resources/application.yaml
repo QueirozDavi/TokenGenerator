@@ -1,0 +1,13 @@
+spring:
+  data:
+    mongodb:
+      database: token-generator
+      host: localhost
+      port: 27017
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+    application:
+      name: tonken_generator
+
+server:
+  port: 8089
