@@ -14,7 +14,7 @@ public class TokenDTO {
     private String message;
     private boolean isValid;
 
-    public TokenDTO(Token token){
+    public TokenDTO(Token token) {
         this.value = token.getValue();
         setIsValid(token.getExpirationDateTime());
         setMessage();
@@ -25,9 +25,9 @@ public class TokenDTO {
     }
 
     private void setMessage() {
-        if(this.isValid)
-            this.message = "This token is expired.";
-        else
+        if (this.isValid)
             this.message = "Your token is successfully validated.";
+        else
+            this.message = "This token is expired.";
     }
 }
