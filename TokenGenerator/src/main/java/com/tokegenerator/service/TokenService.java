@@ -17,7 +17,7 @@ import java.util.Objects;
 public class TokenService {
 
     private TokenRepository tokenRepository;
-    private final int STRING_SIZE = 3;
+    private final int STRING_SIZE = 5;
     private final int DURATION = 10;
 
 
@@ -27,8 +27,6 @@ public class TokenService {
     }
 
     public Map<String, String> generateToken() {
-
-        String s = RandomStringUtils.randomAlphabetic(STRING_SIZE);
 
         Token token = new Token(RandomStringUtils.randomAlphabetic(STRING_SIZE).toUpperCase(),
                 LocalDateTime.now().plusMinutes(DURATION));
