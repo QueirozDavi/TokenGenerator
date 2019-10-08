@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 @Service
@@ -24,13 +26,17 @@ public class TokenService {
         this.tokenRepository = tokenRepository;
     }
 
-    public String generateToken() {
+    public Map<String, String> generateToken() {
 
         Token token = new Token(RandomStringUtils.random(STRING_SIZE).toUpperCase(),
                 LocalDateTime.now().plusMinutes(DURATION));
         tokenRepository.save(token);
 
-        return token.getValue();
+        Map<String, String> response = new HashMap<>();
+
+        response.put("token_value", token.getValue());
+
+        return response;
     }
 
     public TokenDTO getTokenInformations(String tokenValue) {

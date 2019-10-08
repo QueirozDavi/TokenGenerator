@@ -1,4 +1,4 @@
-package digital.sebrae.platform.consulting.config;
+package com.tokegenerator.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
