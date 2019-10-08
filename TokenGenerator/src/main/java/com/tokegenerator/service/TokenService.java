@@ -28,7 +28,9 @@ public class TokenService {
 
     public Map<String, String> generateToken() {
 
-        Token token = new Token(RandomStringUtils.random(STRING_SIZE).toUpperCase(),
+        String s = RandomStringUtils.randomAlphabetic(STRING_SIZE);
+
+        Token token = new Token(RandomStringUtils.randomAlphabetic(STRING_SIZE).toUpperCase(),
                 LocalDateTime.now().plusMinutes(DURATION));
         tokenRepository.save(token);
 
