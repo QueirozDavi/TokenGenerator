@@ -1,8 +1,8 @@
 spring:
-  data:
-    mongodb:
-      database: token-generator
-      host: mongodb+srv://admin:adminio@cluster0-yaekv.mongodb.net/test?retryWrites=true&w=majority
+#  data:
+#    mongodb:
+#      database: token-generator
+#      host: localhost
 #      port: 27017
   jackson:
     property-naming-strategy: SNAKE_CASE
