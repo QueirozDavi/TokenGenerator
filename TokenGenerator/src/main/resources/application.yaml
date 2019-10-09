@@ -2,7 +2,7 @@ spring:
   data:
     mongodb:
       uri: mongodb+srv://admin:adminio@cluster0-yaekv.mongodb.net/token-generator?retryWrites=true&w=majority
-#      database: token-generator
+#      database: token-generator 
 #      host:
 #      username: admin
 #      password: adminio
