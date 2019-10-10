@@ -10,11 +10,13 @@ import java.time.LocalDateTime;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class TokenDTO {
 
+    private String id;
     private String value;
     private String message;
     private boolean isValid;
 
     public TokenDTO(Token token) {
+        this.id = token.getId();
         this.value = token.getValue();
         setIsValid(token.getExpirationDateTime());
         setMessage();

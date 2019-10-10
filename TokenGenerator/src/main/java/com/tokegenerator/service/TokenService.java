@@ -1,5 +1,6 @@
 package com.tokegenerator.service;
 
+import com.tokegenerator.domain.TokenStatusEnum;
 import com.tokegenerator.domain.dto.TokenDTO;
 import com.tokegenerator.domain.Token;
 import com.tokegenerator.exception.NotFoundException;
@@ -39,13 +40,20 @@ public class TokenService {
         return response;
     }
 
-    public TokenDTO getTokenInformations(String tokenValue) {
+    public TokenDTO getTokenInformation(String tokenValue) {
 
         Token token = tokenRepository.findByValue(tokenValue);
-        if (Objects.nonNull(token))
-            return new TokenDTO(token);
-        else
+        TokenDTO tokenDTO;
+
+        if (Objects.nonNull(token)) {
+            tokenDTO = new TokenDTO(token);
+            token.setStatus(TokenStatusEnum.VALIDATED);
+            tokenRepository.save(token);
+
+            return tokenDTO;
+        } else {
             throw new NotFoundException("Token Not Found");
+        }
 
     }
 }

@@ -16,9 +16,11 @@ public class Token extends DocumentBase {
     private String id;
     private String value;
     private LocalDateTime expirationDateTime;
+    private TokenStatusEnum status;
 
     public Token(String value, LocalDateTime expirationDateTime) {
         this.value = value;
         this.expirationDateTime = expirationDateTime;
+        this.status = TokenStatusEnum.UNVALIDATED;
     }
 }

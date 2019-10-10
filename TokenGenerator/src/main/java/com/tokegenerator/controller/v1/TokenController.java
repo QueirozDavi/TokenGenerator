@@ -34,6 +34,8 @@ public class TokenController {
 
     @GetMapping("/information")
     public TokenDTO getTokenInformations(@RequestParam(value = "token", required = true, defaultValue = "") String token) {
-        return tokenService.getTokenInformations(token);
+        return tokenService.getTokenInformation(token);
     }
+
+
 }
