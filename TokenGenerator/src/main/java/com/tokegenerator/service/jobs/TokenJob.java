@@ -3,7 +3,6 @@ package com.tokegenerator.service.jobs;
 import com.tokegenerator.domain.Token;
 import com.tokegenerator.domain.TokenStatusEnum;
 import com.tokegenerator.repository.TokenRepository;
-import net.javacrumbs.shedlock.core.SchedulerLock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -24,11 +23,11 @@ public class TokenJob {
         this.tokenRepository = tokenRepository;
     }
 
-    @Scheduled(cron = "0 0 0 * * *")
-    @SchedulerLock(name = "ExcludeExpiredTokens_deleteExpiredTokens", lockAtLeastForString = "PT1M", lockAtMostForString = "PT5M")
+    @Scheduled(cron = "* 0/30 * * * *")
     @Transactional
     public void deleteExpiredTokens() {
-        List<Token> expiredTokens = tokenRepository.findByStatusNot(TokenStatusEnum.UNVALIDATED);
+        List<Token> expiredTokens = tokenRepository.findByStatusNotAndExpirationDateTimeLessThan(
+                TokenStatusEnum.UNVALIDATED, LocalDateTime.now());
 
         if(!CollectionUtils.isEmpty(expiredTokens)){
             tokenRepository.deleteAll(expiredTokens.stream()

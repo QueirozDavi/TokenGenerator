@@ -8,6 +8,7 @@ import com.tokegenerator.service.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.constraints.Email;
 import java.util.Map;
 
 @RestController
@@ -25,8 +26,8 @@ public class TokenController {
     }
 
     @GetMapping
-    public JsonNode generateToken() {
-        Map<String, String> map = tokenService.generateToken();
+    public JsonNode generateToken(@RequestParam(value = "email", required = false) @Email String email) {
+        Map<String, String> map = tokenService.generateToken(email);
         ObjectNode response = objectMapper.convertValue(map, ObjectNode.class);
 
         return response.get("token_value");
@@ -36,6 +37,4 @@ public class TokenController {
     public TokenDTO getTokenInformations(@RequestParam(value = "token", required = true, defaultValue = "") String token) {
         return tokenService.getTokenInformation(token);
     }
-
-
 }

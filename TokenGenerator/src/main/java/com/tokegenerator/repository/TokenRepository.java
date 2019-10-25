@@ -11,5 +11,6 @@ public interface TokenRepository extends MongoRepository<Token, String> {
 
     Token findByValue(String value);
 
-    List<Token> findByStatusNot(TokenStatusEnum status);
+    List<Token> findByStatusNotAndExpirationDateTimeLessThan(TokenStatusEnum statusEnum,
+                                                             LocalDateTime expirationDateTime);
 }
